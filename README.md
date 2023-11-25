@@ -4,3 +4,6 @@ This repository captures my practical learning experience as I follow along with
 Portfolio:
 https://www.youtube.com/watch?v=hYv6BM2fWd8&t=14s
 
+
+The Parallax Effect:
+https://www.youtube.com/watch?v=UgIwjLg4ONk
