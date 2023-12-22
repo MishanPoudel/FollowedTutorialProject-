@@ -27,10 +27,10 @@ function App() {
           }}>
         </ParallaxLayer>
         <ParallaxLayer offset={0.2} speed={0.05} onClick={()=> ref.current.scrollTo(3)}>
-          <h2>Love You</h2>
+          <h2>Misery is the</h2>
         </ParallaxLayer>
         <ParallaxLayer offset={3.2} speed={2} onClick={()=> ref.current.scrollTo(0)}>
-          <h2>Budo bau</h2>
+          <h2>Monkey King</h2>
         </ParallaxLayer>
         <ParallaxLayer
         sticky={{start:0.9, end: 2.5}}>
