@@ -22,9 +22,7 @@ export default function TextForm(props) {
     props.showAlert("Capitalized the Sentence!", "Success");
   };
   const handleCopy = () => {
-    var text = document.getElementById("mybox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!", "Success");
   };
   const handleRevT = () => {
@@ -49,79 +47,88 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
   const [text, setText] = useState("");
-  const wordChecker = (word) => {
-    const wordCount = word
-      .split(/\s+/)
-      .filter((item) => item.length > 0).length;
-    return `${wordCount} words and ${word.length} characters`;
-  };
 
   return (
     <>
-      <p className="text-2xl font-lighter m-8 mx-32">{props.heading}</p>
+      <p className="text-2xl font-lighter m-8 mx-10">{props.heading}</p>
       <textarea
-        className="textarea mx-32 w-[80%] h-[40vh]"
+        className="textarea mx-10 w-[60%] h-[40vh] border-solid border-1 border-primary"
         placeholder="Type Here"
         onChange={handleOnChange}
         value={text}
         id="mybox"
       ></textarea>
-      <div className="mx-32 my-4 flex">
+      <div className="mx-10 my-4 w-md">
         <button
+          disabled={text.length === 0}
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
           onClick={handleUpClick}
         >
           Convert To Uppercase
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleLoClick}
         >
           Convert To Lowercase
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleCapital}
         >
           Capitalize
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleExtraSpaces}
         >
           Remove Extra Space
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleRevT}
         >
           Reverse Text
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleRevW}
         >
           Reverse Words
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleCopy}
         >
           Copy Text
         </button>
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-1"
+          disabled={text.length === 0}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-1"
           onClick={handleClearClick}
         >
           Clear Text
         </button>
       </div>
-      <div className="container mx-32">
+      <div className="container mx-10">
         <p className="text-2xl font-bold my-8 mx-1">Your Text Summary</p>
-        <p>{wordChecker(text)}</p>
+        <p>
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
+        </p>
         {/* <p>{0.008 * text.split(" ").length} minutes to read allat</p> */}
         <p className="text-2xl font-bold my-8">Preview</p>
-        <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
+        <p>{text.length > 0 ? text : "Nothing To Preview"}</p>
       </div>
     </>
   );

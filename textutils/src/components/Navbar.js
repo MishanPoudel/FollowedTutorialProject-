@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 export default function Navbar(props) {
   return (
     <>
-      <div className="navbar bg-primary text-primary-content px-4">
+      <div className="navbar bg-primary text-primary-content px-4 max-w-full">
         <div className="flex-1">
-          <Link className="btn btn-ghost text-xl" to="/">{props.title}</Link>
-          <Link className="btn btn-ghost text-xl" to="/about">About</Link>
+          <Link className="btn btn-ghost text-xl" to="/">
+            {props.title}
+          </Link>
+          <Link className="btn btn-ghost text-xl" to="/about">
+            About
+          </Link>
         </div>
         <div className="flex-none ">
           <label className="swap swap-rotate">

@@ -22,11 +22,11 @@ function App() {
   const handleToggle = (e) => {
     if (e.target.checked) {
       setTheme("dark");
-      document.title = "TextUtils - Dark";
+      // document.title = "TextUtils - Dark";
       showAlert("Dark mode has been enabled.", "Success");
     } else {
       showAlert("Light mode has been enabled.", "Success");
-      document.title = "TextUtils - Light";
+      // document.title = "TextUtils - Light";
       setTheme("light");
     }
   };
