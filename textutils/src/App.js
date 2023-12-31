@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Alert from "./components/Alert";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -34,18 +37,29 @@ function App() {
       type: type,
     });
     setTimeout(() => {
-      setAlert(null); // Reset the alert state
+      setAlert(null);
     }, 1500);
   };
 
   return (
     <>
-      <Navbar title="TextUtils" toggle={handleToggle} theme={theme} />
-      <Alert alert={alert} />
-      <TextForm
-        heading="Enter The Text To Analyze Below"
-        showAlert={showAlert}
-      />
+      <Router>
+        <Navbar title="TextUtils" toggle={handleToggle} theme={theme} />
+        <Alert alert={alert} />
+        <Routes>
+          <Route exec path="/about" element={<About />}></Route>
+          <Route
+            exec
+            path="/"
+            element={
+              <TextForm
+                heading="Enter The Text To Analyze Below"
+                showAlert={showAlert}
+              />
+            }
+          ></Route>
+        </Routes>
+      </Router>
     </>
   );
 }

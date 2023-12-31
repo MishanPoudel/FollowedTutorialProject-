@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
     <>
       <div className="navbar bg-primary text-primary-content px-4">
         <div className="flex-1">
-          <button className="btn btn-ghost text-xl">{props.title}</button>
+          <Link className="btn btn-ghost text-xl" to="/">{props.title}</Link>
+          <Link className="btn btn-ghost text-xl" to="/about">About</Link>
         </div>
         <div className="flex-none ">
           <label className="swap swap-rotate">

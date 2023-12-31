@@ -28,16 +28,18 @@ export default function TextForm(props) {
     props.showAlert("Copied to Clipboard!", "Success");
   };
   const handleRevT = () => {
-      const newText = text.split("").reverse().join("");
-      setText(newText);
-      props.showAlert("String Reversed!", "Success");
-    };
+    const newText = text.split("").reverse().join("");
+    setText(newText);
+    props.showAlert("String Reversed!", "Success");
+  };
   const handleRevW = () => {
     const words = text.split(/\s+/);
-    const reversedText = words.map(word => word.split("").reverse().join("")).join(" ");
+    const reversedText = words
+      .map((word) => word.split("").reverse().join(""))
+      .join(" ");
     setText(reversedText);
     props.showAlert("Words Reversed!", "Success");
-  };  
+  };
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
@@ -48,10 +50,12 @@ export default function TextForm(props) {
   };
   const [text, setText] = useState("");
   const wordChecker = (word) => {
-    const wordCount = word.split(/\s+/).filter((item) => item.length > 0).length;
+    const wordCount = word
+      .split(/\s+/)
+      .filter((item) => item.length > 0).length;
     return `${wordCount} words and ${word.length} characters`;
   };
-  
+
   return (
     <>
       <p className="text-2xl font-lighter m-8 mx-32">{props.heading}</p>
@@ -61,7 +65,7 @@ export default function TextForm(props) {
         onChange={handleOnChange}
         value={text}
         id="mybox"
-        ></textarea>
+      ></textarea>
       <div className="mx-32 my-4 flex">
         <button
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -114,9 +118,7 @@ export default function TextForm(props) {
       </div>
       <div className="container mx-32">
         <p className="text-2xl font-bold my-8 mx-1">Your Text Summary</p>
-        <p>
-          {wordChecker(text)}
-        </p>
+        <p>{wordChecker(text)}</p>
         {/* <p>{0.008 * text.split(" ").length} minutes to read allat</p> */}
         <p className="text-2xl font-bold my-8">Preview</p>
         <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
